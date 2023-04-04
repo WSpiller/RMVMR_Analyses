@@ -19,7 +19,7 @@ library(MVMR)
 library(ggplot2)
 
 #Set number of iterations
-K<-1
+K<-1000
 
 #################################
 ### Set simulation parameters ###
@@ -315,9 +315,6 @@ for(k in 1:K){
     }
     
   }
-  
-  #Estimate conditional instrument strength
-  strength_X1X2X3p<- suppressWarnings(strength_mvmr(X1X2X3fp.data))
   
   #Save conditional F statistic for exposure 1
   X1fp[k]<-strength_X1X2X3p[1]

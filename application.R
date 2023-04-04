@@ -1,9 +1,21 @@
-library(RadialMR)
+##############################################
+###   Install and load relevant packages   ###
+##############################################
+
+#install.packages("remotes")
+#library(remotes)
+#install_github("WSpiller/RMVMR", build_opts = c("--no-resave-data", "--no-manual"), build_vignettes = TRUE)
+#install_github("WSpiller/MVMR", build_opts = c("--no-resave-data", "--no-manual"), build_vignettes = TRUE)
+#install_github("WSpiller/RadialMR", build_opts = c("--no-resave-data", "--no-manual"), build_vignettes = TRUE)
+
+#Load libraries into R
 library(RMVMR)
-set.seed(12345)
+library(RadialMR)
+library(MVMR)
+library(ggplot2)
 
 #Load simulated summary data
-sum.data<-read.csv("lipidsCHD_dat.csv",header=T)
+sum.data<-read.csv("applied_data.csv",header=T)
 
 
 
@@ -78,7 +90,6 @@ mvmrplots<-plot_rmvmr(MVMR_dat,mvmrres)
 mvmrplots$p1
 mvmrplots$p2
 
-
 #############################################################
 ###   Radial MVMR Analyses: X1, X2, and X3 with pruning   ###
 #############################################################
@@ -126,12 +137,11 @@ mvmrpplots<-plot_rmvmr(mvmrp.data,mvmrpres)
 #Outliers
 MVMR_dat[!MVMR_dat$SNP %in% mvmrp.data$SNP,]$SNP
 
-#Output plots
-
-png(filename = "Figure 9A.png",
-    width = 1920 , height = 1080, units = "px", res=200,
+png(filename = "Figure 9D.png",
+    width = 1400 , height = 1200, units = "px", res=300,
     bg = "white")
 
-mvmrplots$p1
+mvmrplots$p2
 
 dev.off()
+
